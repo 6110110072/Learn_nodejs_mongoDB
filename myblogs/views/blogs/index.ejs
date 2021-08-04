@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chayanon Blogs</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <%- include('../layouts') %>
+    <div class="div">
+      <a href="/blogs/add" class="btn btn-primary">เขียนบทความ</a>
+    </div>
+    <hr />
+    <h2><%= data %></h2>
+
+    <!-- this is my blogs <%= blogs %>  -->
+    <%
+    Object.values(blogs).forEach(function(blog){ %>
+      <h4><strong>บทความ : </strong><%= blog.title %></h4>
+      <p><strong>แต่งโดย : </strong><%= blog.author %></p>
+      <p><strong>หมวดหมู่ : </strong><%= blog.category %></p>
+      <a href="/blogs/edit/<%= blog._id %>">แก้ไข</a>
+      <a href="/blogs/delete/<%= blog._id %>" onclick="return confirm('ต้องการจะลบหรือไม่ ?')">ลบ</a>
+
+      <hr>
+    <% }); %>
+  </body>
+</html>
